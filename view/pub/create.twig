@@ -1,0 +1,36 @@
+{{ include('header.twig', {'title': 'Créer une nouvelle publicité'}) }}
+
+<main>
+    <section class="container">
+        <h1>Ajouter une nouvelle publicité</h1>
+
+        <form action="{{ path }}pub/store" method="post">
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" name="titre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" id="type" name="type">
+            </div>
+
+            <div class="form-group">
+                <label for="duree">Durée (en secondes)</label>
+                <input type="number" id="duree" name="duree">
+            </div>
+
+            <div class="form-group">
+                <label for="lien_video">Lien Vidéo</label>
+                <input type="text" id="lien_video" name="lien_video">
+            </div>
+
+            <div class="form-group">
+                <label for="annee_originale">Année Originale</label>
+                <input type="number" id="annee_originale" name="annee_originale">
+            </div>
+
+            <button type="submit">Créer</button>
+        </form>
+    </section>
+</main>

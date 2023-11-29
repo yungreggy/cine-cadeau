@@ -1,0 +1,27 @@
+{{ include('header.twig', {'title': 'Détails de la publicité'}) }}
+
+<main>
+    <section class="container">
+        <h1>{{ publicite.titre }}</h1>
+
+        <p><strong>Type:</strong> {{ publicite.type }}</p>
+        <p><strong>Durée:</strong> {{ publicite.duree }} secondes</p>
+        <p><strong>Année Originale:</strong> {{ publicite.annee_originale }}</p>
+        
+           {% if publicite.lien_video %}
+                <div class="video-container">
+                    <video id="videoPlayer" controls style="width: 480px; height: auto;">
+                        <source src="{{ path }}{{ publicite.lien_video }}" type="video/mp4">
+                        Votre navigateur ne supporte pas la balise vidéo.
+                    </video>
+                </div>
+                <button id="castButton">Cast</button>
+            {% else %}
+                <p>Pas de vidéo disponible.</p>
+            {% endif %}
+        </div>
+         <br>
+          <a href="{{ path }}pub/edit/{{ publicite.id }}" class="btn-edit">Modifier</a>
+     
+    </section>
+</main>

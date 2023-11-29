@@ -1,0 +1,29 @@
+{{ include('header.twig', {'title': 'Détails de l\'intermède'}) }}
+
+<main>
+    <section class="container">
+        <h1>Fiche technique : {{ intermede.titre }}</h1>
+
+        <div class="intermede-details">
+            <p><strong>Titre : </strong>{{ intermede.titre }}</p>
+            <p><strong>Type : </strong>{{ intermede.type }}</p>
+            <p><strong>Description : </strong>{{ intermede.description }}</p>
+            <p><strong>Durée : </strong>{{ intermede.duree }}</p>
+            <p><strong>Année : </strong>{{ intermede.annee_originale }}</p>
+
+            {% if intermede.lien_video %}
+                <div class="video-container">
+                    <video id="videoPlayer" controls style="width: 480px; height: auto;">
+                        <source src="{{ path }}{{ intermede.lien_video }}" type="video/mp4">
+                        Votre navigateur ne supporte pas la balise vidéo.
+                    </video>
+                </div>
+                <button id="castButton">Cast</button>
+            {% else %}
+                <p>Pas de vidéo disponible.</p>
+            {% endif %}
+        </div>
+         <br>
+          <a href="{{ path }}intermede/edit/{{ intermede.id }}" class="btn-edit">Modifier</a>
+    </section>
+</main>

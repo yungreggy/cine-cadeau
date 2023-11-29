@@ -1,0 +1,35 @@
+{{ include('header.twig', {title: 'Créer une nouvelle série'}) }}
+
+<main>
+    <section class="container">
+        <h1>Créer une nouvelle série</h1>
+
+        <form action="{{ path }}serie/store" method="post">
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" name="titre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="lien_image">Lien de l'Image</label>
+                <input type="text" id="lien_image" name="lien_image">
+            </div>
+
+       
+
+            <div class="form-group">
+                <label for="annee_originale">Année Originale</label>
+                <input type="number" id="annee_originale" name="annee_originale">
+            </div>
+
+         
+
+            <button type="submit">Créer</button>
+        </form>
+    </section>
+</main>

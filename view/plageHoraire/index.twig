@@ -1,0 +1,36 @@
+{{ include('header.twig', {'title': 'Liste des Plages Horaires'}) }}
+<main>
+    <section class="container">
+        <h1>Liste des Plages Horaires</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Programme ID</th>
+                    <th>Heure de Début</th>
+                    <th>Heure de Fin</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for plageHoraire in plagesHoraires %}
+                    <tr>
+                        <td>{{ plageHoraire.id }}</td>
+                        <td>{{ plageHoraire.id_programme }}</td>
+                        <td>{{ plageHoraire.heure_debut }}</td>
+                        <td>{{ plageHoraire.heure_fin }}</td>
+                        <td>
+                            <a href="{{ path }}plageHoraire/show/{{ plageHoraire.id }}">Voir Détails</a>
+                            <!-- Ajouter d'autres liens si nécessaire, par exemple pour modifier ou supprimer -->
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucune plage horaire trouvée.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>

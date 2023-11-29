@@ -1,0 +1,36 @@
+{{ include('header.twig', {'title': 'Modifier la Plage Horaire'}) }}
+
+<main>
+    <section class="container">
+        <h1>Modifier la Plage Horaire {{ plageHoraire.id }}</h1>
+
+        <form action="{{ path }}caseHoraire/update/{{ plageHoraire.id }}" method="post">
+            <div>
+                <label for="heure_debut">Heure de Début:</label>
+                <input type="time" id="heure_debut" name="heure_debut" value="{{ plageHoraire.heure_debut|date('H:i') }}" required>
+            </div>
+
+            <div>
+                <label for="heure_fin">Heure de Fin:</label>
+                <input type="time" id="heure_fin" name="heure_fin" value="{{ plageHoraire.heure_fin|date('H:i') }}" required>
+            </div>
+
+            <div>
+                <label for="media_id">Choisir le Film:</label>
+                <select id="media_id" name="media_id">
+                    {% for media in medias %}
+                   
+                        <option value="{{ media.id }}" {% if film.id == plageHoraireMedia.media_id %} selected {% endif %}>{{ film.titre }}</option>
+                    {% endfor %}
+                 
+                </select>
+            </div>
+    {{dump(media)}}
+            <div>
+                <input type="submit" value="Enregistrer les modifications">
+            </div>
+        </form>
+
+        <a href="{{ path }}programmation/show/{{ plageHoraire.id_programme }}">Retour au Programme</a>
+    </section>
+</main>

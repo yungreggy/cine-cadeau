@@ -1,0 +1,37 @@
+{{ include('header.twig', {title: film.titre}) }}
+
+<section class="container">
+    <h1>{{ film.titre }}</h1>
+    
+    <div class="film-details">
+        {% if film.lien_image %}
+            <img src="{{ film.lien_image }}" alt="Affiche de {{ film.titre }}" class="film-poster" style="max-width: 200px; max-height: 300px;">
+        {% endif %}
+        <div class="film-info">
+            <p><strong>Genre:</strong> {{ film.genre }}</p>
+            <p><strong>Durée:</strong> {{ film.duree }} minutes</p>
+            <p><strong>Catégorie:</strong> {{ film.categorie }}</p>
+
+            <p><strong>Année:</strong> {{ film.annee_originale }}</p>
+            <p><strong>Résumé:</strong> {{ film.description }}</p>
+            <p><strong>Réalisateur:</strong> {{ film.realisateur }}</p>
+            <p><strong>Acteurs:</strong> {{ film.acteurs }}</p>
+            <p><strong>Collection:</strong> {{ film.collection }}</p>
+       {% if film.lien_video %}
+            <a href="{{ path }}televiseur?video={{ film.lien_video }}">Regarder sur le téléviseur</a>
+        {% else %}
+            <p>Pas de vidéo disponible.</p>
+        {% endif %}
+        </div>
+
+       
+        </div>
+        <div class="film-actions">
+            <!-- Bouton ou lien pour modifier le film -->
+            <a href="{{ path }}film/edit/{{ film.id }}" class="btn-edit">Modifier</a>
+
+            <!-- Bouton ou lien pour supprimer le film -->
+            <!-- Assure-toi d'ajouter une confirmation avant la suppression -->
+            <a href="{{ path }}film/delete/{{ film.id }}" class="btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce film ?');">Supprimer</a>
+    </div>
+</section>

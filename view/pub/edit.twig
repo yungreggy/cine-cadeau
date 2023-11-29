@@ -1,0 +1,36 @@
+{{ include('header.twig', {'title': 'Modifier la publicité'}) }}
+
+<main>
+    <section class="container">
+        <h1>Modifier la publicité : {{ publicite.titre }}</h1>
+
+        <form action="{{ path }}pub/update/{{ publicite.id }}" method="post">
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" name="titre" value="{{ publicite.titre }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" id="type" name="type" value="{{ publicite.type }}">
+            </div>
+
+            <div class="form-group">
+                <label for="duree">Durée (en secondes)</label>
+                <input type="number" id="duree" name="duree" value="{{ publicite.duree }}">
+            </div>
+
+            <div class="form-group">
+                <label for="lien_video">Lien Vidéo</label>
+                <input type="text" id="lien_video" name="lien_video" value="{{ publicite.lien_video }}">
+            </div>
+
+            <div class="form-group">
+                <label for="annee_originale">Année Originale</label>
+                <input type="number" id="annee_originale" name="annee_originale" value="{{ publicite.annee_originale }}">
+            </div>
+
+            <button type="submit">Mettre à jour</button>
+        </form>
+    </section>
+</main>

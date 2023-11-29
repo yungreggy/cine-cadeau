@@ -1,0 +1,21 @@
+{{ include('header.twig', {'title': 'Lecteur TV'}) }}
+
+<main>
+    <section class="container">
+        <h1>Téléviseur</h1>
+ 
+        <div class="video-container" style="display: inline-block; max-width: 60%;">
+            <video id="videoPlayer" controls autoplay style="width: 100%; height: auto;">
+                <source src="{{ video }}" type="video/mp4">
+                Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+        </div>
+        
+        <button id="castButton">Cast</button>
+    </section>
+
+    <script type="text/javascript">
+        // Ici, tu ajoutes ton script pour le casting Chromecast
+        // Assure-toi que le SDK Google Cast est chargé
+    </script>
+</main>

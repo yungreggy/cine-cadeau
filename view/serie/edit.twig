@@ -1,0 +1,35 @@
+{{ include('header.twig', {title: 'Modifier la série'}) }}
+
+<main>
+    <section class="container">
+        <h1>Modifier la série : {{ serie.titre }}</h1>
+
+        <form action="{{ path }}serie/update/{{ serie.id }}" method="post">
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" name="titre" value="{{ serie.titre }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description">{{ serie.description }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="lien_image">Lien de l'Image</label>
+                <input type="text" id="lien_image" name="lien_image" value="{{ serie.lien_image }}">
+            </div>
+
+         
+
+            <div class="form-group">
+                <label for="annee_originale">Année Originale</label>
+                <input type="number" id="annee_originale" name="annee_originale" value="{{ serie.annee_originale }}">
+            </div>
+
+         
+
+            <button type="submit">Mettre à jour</button>
+        </form>
+    </section>
+</main>

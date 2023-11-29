@@ -1,0 +1,34 @@
+{{ include('header.twig', {'title': 'Liste des publicités'}) }}
+
+<main>
+    <section class="container">
+        <h1>Liste des publicités</h1>
+                <a href="{{path}}pub/create">Ajouter une vidéo</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Type</th>
+                    <!-- Ajoute ici d'autres en-têtes de colonnes si nécessaire -->
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for publicite in publicites %}
+                    <tr>
+                        <td>
+                            <a href="{{ path }}pub/show/{{ publicite.id }}">{{ publicite.titre }}</a>
+                        </td>
+                        <td>{{ publicite.type }}</td>
+                        <!-- Ajoute ici d'autres colonnes si nécessaire -->
+                        <td>
+                            <a href="{{ path }}pub/edit/{{ publicite.id }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+

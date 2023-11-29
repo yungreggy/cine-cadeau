@@ -1,0 +1,28 @@
+  
+ {{ include('header.twig', {'title': 'Liste des programmes'}) }}
+ 
+  <h1>Liste des Programmes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom du Programme</th>
+                <th>Date de Début</th>
+                <th>Date de Fin</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for programme in programmes %}
+                <tr>
+                    <td>{{ programme.nom }}</td>
+                    <td>{{ programme.date_debut }}</td>
+                    <td>{{ programme.date_fin }}</td>
+                    <td>
+                        <a href="{{ path }}programmation/show/{{ programme.id }}">Voir</a> |
+                        <a href="{{ path }}programmation/edit/{{ programme.id }}">Modifier</a> |
+                        <a href="{{ path }}plage_horaire/create/{{ programme.id }}">Ajouter une Plage Horaire</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>

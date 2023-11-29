@@ -1,0 +1,50 @@
+{{ include('header.twig', {'title': 'Ajouter un épisode à une série'}) }}
+
+<main>
+    <section class="container">
+        <h1>Ajouter un nouvel épisode</h1>
+              <form action="{{ path }}emission/store" method="post">
+          <div class="form-group">
+                <label for="id_serie">Série</label>
+              <select id="id_serie" name="id_serie">
+    {% for serie in series %}
+        <option value="{{ serie.id }}" {% if serie.id == selectedSerieId %}selected{% endif %}>
+            {{ serie.titre }}
+        </option>
+    {% endfor %}
+</select>
+
+            </div>
+
+  
+            <div class="form-group">
+                <label for="titre">Titre de l'épisode</label>
+                <input type="text" id="titre" name="titre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+
+              <div class="form-group">
+                <label for="numero_saison">Saison</label>
+              <input type="number" id="numero_saison" name="numero_saison" required>
+
+            </div>
+
+            <div class="form-group">
+                <label for="numero_episode">Numéro de l'épisode</label>
+                <input type="number" id="numero_episode" name="numero_episode">
+            </div>
+
+            <div class="form-group">
+                <label for="lien_video">Lien Vidéo</label>
+                <input type="text" id="lien_video" name="lien_video">
+            </div>
+
+
+            <button type="submit">Ajouter l'épisode</button>
+        </form>
+    </section>
+</main>

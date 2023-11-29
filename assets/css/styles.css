@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Open+Sans&display=swap');
+
+
+
+body {
+    font-family: 'open sans';
+
+    /* Minimum height */
+
+}
+
+
+body a {
+    color: #858585;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+form textarea {
+    width: 584px;
+    height: 99px;
+    padding: 7px;
+}
+
+form input {
+    width: 584px;
+    height: 30px;
+    padding: 7px;
+}
+
+form button {
+    margin-top: 1rem;
+}
+
+form {
+    margin-bottom: 5rem;
+}
+
+@keyframes twinkle_one {
+    0% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes twinkle_two {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes twinkle_three {
+    0% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.galaxy {
+
+    background: linear-gradient(181deg, #080914 65.94%, #215533 98%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
+
+    min-height: 100vh;
+}
+
+.galaxy .star {
+    position: absolute;
+    background-color: white;
+}
+
+.galaxy .star-type1 {
+    width: 1px;
+    height: 1px;
+    border-radius: 2px;
+    box-shadow: 0 0 1px 1px white;
+    animation: twinkle_one 3s ease-in-out infinite;
+}
+
+.galaxy .star-type2 {
+    width: 2px;
+    height: 2px;
+    border-radius: 2px;
+    box-shadow: 0 0 2px 1px white;
+    animation: twinkle_two 12s ease-in-out infinite;
+}
+
+.galaxy .star-type3 {
+    width: 2px;
+    height: 2px;
+    border-radius: 2px;
+    box-shadow: 0 0 2px 0 white;
+    animation: twinkle_three 7s ease-in-out infinite;
+}
+
+/* Style de base pour le tableau */
+table {
+    width: 100%;
+    /* Utilise toute la largeur disponible */
+    border-collapse: collapse;
+    /* Élimine l'espace entre les bordures */
+    margin: 20px 0;
+    /* Ajoute un peu d'espace autour du tableau */
+    font-size: 0.9em;
+    /* Taille de la police un peu plus petite pour les tableaux */
+    min-width: 400px;
+    /* Largeur minimale pour les petits écrans */
+
+    /* Ombre douce pour un effet "élévation" */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+thead {
+    background-color: #d7d8d9;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.film-titre {
+    text-decoration: none;
+    color: #515254;
+    font-weight: 800;
+}
+
+.film-titre:hover {
+    color: blue;
+
+}
+
+td a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: #727272;
+}
+
+tbody tr:hover {
+    background-color: rgb(196, 202, 211);
+    color: rgb(255, 255, 255);
+    /* Couleur d'arrière-plan au survol */
+    cursor: pointer;
+    /* Changement du curseur pour indiquer la possibilité d'une action */
+}
+
+.container {
+    background-color: #f4f8fa;
+
+}
+
+table img {
+    border: 1px solid rgb(186, 186, 186);
+    padding: 10px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 5rem;
+    font-family: 'Inter';
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    position: relative;
+    z-index: 1001;
+
+}
+
+nav img {
+    max-width: 10%;
+    padding-right: 20px;
+    position: absolute;
+    right: 2%;
+    top: -89%;
+}
+
+nav a:hover {
+
+    color: rgb(56, 190, 2);
+}
+
+
+
+nav a:visited {
+
+
+    text-decoration: none;
+}
+
+/* Style pour le menu principal */
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.liste-episodes {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+ul li {
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Style pour les sous-menus */
+ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(53, 105, 128, .3), 0 6px 20px 0 rgba(165, 200, 213, .41);
+}
+
+ul li:hover>ul {
+    display: block;
+}
+
+ul ul li {
+    display: block;
+    width: 150px;
+    /* Largeur du sous-menu */
+    padding: 10px;
+}
+
+ul ul li a {
+    color: #555;
+    font-weight: normal;
+}
+
+ul ul li:hover {
+    background-color: #f5f5f5;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.filtres {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+}
+
+.grid-calendrier {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* 7 jours par semaine */
+    grid-gap: 10px;
+}
+
+.grid-calendrier div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+#calendrier {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Espacement entre les jours du calendrier */
+}
+
+.jour-calendrier {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: calc(33.33% - 20px);
+    /* Pour 3 colonnes par ligne */
+    box-sizing: border-box;
+}
+
+/* Style pour le titre de chaque jour */
+.jour-calendrier h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Style pour chaque élément de média */
+.jour-calendrier p {
+    font-size: 14px;
+    margin: 5px 0;
+}

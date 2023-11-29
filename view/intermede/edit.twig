@@ -1,0 +1,41 @@
+{{ include('header.twig', {'title': 'Modifier l\'intermède'}) }}
+
+<main>
+    <section class="container">
+        <h1>Modifier l'intermède : {{ intermede.titre }}</h1>
+
+        <form action="{{ path }}intermede/update/{{ intermede.id }}" method="post">
+            <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" id="titre" name="titre" value="{{ intermede.titre }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" id="type" name="type" value="{{ intermede.type }}">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description">{{ intermede.description }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="duree">Durée</label>
+                <input type="text" id="duree" name="duree" value="{{ intermede.duree }}">
+            </div>
+
+            <div class="form-group">
+                <label for="annee_originale">Année Originale</label>
+                <input type="number" id="annee_originale" name="annee_originale" value="{{ intermede.annee_originale }}">
+            </div>
+
+            <div class="form-group">
+                <label for="lien_video">Lien Vidéo</label>
+                <input type="text" id="lien_video" name="lien_video" value="{{ intermede.lien_video }}">
+            </div>
+
+            <button type="submit">Mettre à jour</button>
+        </form>
+    </section>
+</main>

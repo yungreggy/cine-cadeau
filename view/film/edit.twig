@@ -1,0 +1,76 @@
+{{ include('header.twig', {title: 'Modifier le film'}) }}
+
+<main>
+
+<section class="container">
+    <h1>Modifier le film : {{ film.titre }}</h1>
+
+    <form action="{{ path }}film/update/{{ film.id }}" method="post">
+        <div class="form-group">
+            <label for="titre">Titre</label>
+            <input type="text" id="titre" name="titre" value="{{ film.titre }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <input type="text" id="genre" name="genre" value="{{ film.genre }}" required>
+        </div>
+
+        <div class="form-group">
+    <label for="categorie">Catégorie</label>
+    <select id="categorie" name="categorie" required>
+        <option value="">-- Sélectionner une catégorie --</option>
+        <option value="long-métrage" {% if film.categorie == 'long-métrage' %}selected{% endif %}>Long-métrage</option>
+        <option value="moyen-métrage" {% if film.categorie == 'moyen-métrage' %}selected{% endif %}>Moyen-métrage</option>
+        <option value="court-métrage" {% if film.categorie == 'court-métrage' %}selected{% endif %}>Court-métrage</option>
+    </select>
+</div>
+
+
+        <div class="form-group">
+            <label for="duree">Durée</label>
+            <input type="number" id="duree" name="duree" value="{{ film.duree }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="annee_originale">Année</label>
+            <input type="number" id="annee_originale" name="annee_originale" value="{{ film.annee_originale }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" >{{ film.description }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="lien_image">Lien de l'Image</label>
+            <input type="text" id="lien_image" name="lien_image" value="{{ film.lien_image }}">
+        </div>
+
+        <div class="form-group">
+            <label for="lien_video">Lien Vidéo</label>
+            <input type="text" id="lien_video" name="lien_video" value="{{ film.lien_video }}">
+        </div>
+
+
+        <div class="form-group">
+            <label for="realisateur">Réalisateur</label>
+            <input type="text" id="realisateur" name="realisateur" value="{{ film.realisateur }}">
+        </div>
+
+        <div class="form-group">
+            <label for="acteurs">Acteurs</label>
+            <input type="text" id="acteurs" name="acteurs" value="{{ film.acteurs }}">
+        </div>
+
+        <div class="form-group">
+            <label for="collection">Collection</label>
+            <input type="text" id="collection" name="collection" value="{{ film.collection }}">
+        </div>
+
+
+        <button type="submit">Mettre à jour</button>
+    </form>
+</section>
+
+</main>

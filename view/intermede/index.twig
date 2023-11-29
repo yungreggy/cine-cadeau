@@ -1,0 +1,45 @@
+{{ include('header.twig', {title: 'Liste des intermèdes'}) }}
+
+<main>
+    <section class="container">
+        <h1>Liste des intermèdes</h1>
+        <a href="{{path}}intermede/create">Ajouter une vidéo</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Durée</th>
+                    <th>Année Originale</th>
+                    <th>Lien Vidéo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for intermede in intermedes %}
+                <tr>
+                    <td>{{ intermede.id }}</td>
+                    <td>
+                        <a href="{{ path }}intermede/show/{{ intermede.id }}">{{ intermede.titre }}</a>
+                    </td>
+                    <td>{{ intermede.type }}</td>
+                    <td>{{ intermede.description }}</td>
+                    <td>{{ intermede.duree }} minute(s)</td>
+                    <td>{{ intermede.annee_originale }}</td>
+                    <td>
+                        {% if intermede.lien_video %}
+                           <a href="{{ path }}{{ intermede.lien_video }}" target="_blank">Télécharger</a>
+
+                        {% else %}
+                            Pas de lien disponible
+                        {% endif %}
+                    </td>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>

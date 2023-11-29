@@ -1,0 +1,94 @@
+{{ include('header.twig', {'title': 'Calendrier du programme'}) }}
+<h1>Détails du Programme : {{ programme.nom }}</h1>
+<div>
+    <p><strong>Date de début :</strong> {{ programme.date_debut }}</p>
+    <p><strong>Date de fin :</strong> {{ programme.date_fin }}</p>
+
+ <div id="calendrier">
+    {% for date, medias in filmsParDate %}
+        <div class="jour-calendrier">
+            <h3>{{ date|date('l j F Y', 'Europe/Paris') }}</h3>
+            {% for media in medias %}
+                <p>
+                    {{ media.titre }} - {{ media.heure_debut|date('H:i', 'Europe/Paris') }}
+          
+                </p>
+            
+            {% else %}
+                <p>Aucun film programmé pour cette date.</p>
+            {% endfor %}
+           
+             <a href="{{ path }}caseHoraire/edit/{{ date }}">Modifier cette journée</a>
+        </div>
+    {% endfor %}
+</div>
+
+
+    <a href="{{ path }}programmation/edit/{{ programme.id }}">Modifier le Programme</a> |
+    <a href="{{ path }}programmation/delete/{{ programme.id }}">Supprimer le Programme</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dateDebutProgramme = new Date('{{ programme.date_debut }}');
+    console.log(dateDebutProgramme);
+    const dateFinProgramme = new Date('{{ programme.date_fin }}');
+    const plagesHoraires = {{ plagesHoraires|json_encode|raw }};
+    const filmsParDate = {{ filmsParDate|json_encode|raw }}; // Assurez-vous que cela transmet correctement les données
+    console.log(filmsParDate)
+    
+    const calendrier = document.getElementById('calendrier');
+    console.log(plagesHoraires);
+
+    for (let dt = new Date(dateDebutProgramme); dt <= dateFinProgramme; dt.setDate(dt.getDate() + 1)) {
+        let cell = document.createElement('div');
+        cell.className = 'jour-calendrier';
+        cell.textContent = dt.toLocaleDateString('fr-FR');
+
+        plagesHoraires.forEach(function(plage) {
+           
+            plage.medias.forEach(function(media) {
+               
+                let dateMediaDebut = new Date(media.date_debut);
+                let dateStringMedia = dateMediaDebut.toISOString().split('T')[0];
+                let dateStringCell = dt.toISOString().split('T')[0];
+
+                if (dateStringMedia === dateStringCell) {
+                    let infoFilm = document.createElement('p');
+                    infoFilm.textContent = media.titre;
+                    cell.appendChild(infoFilm);
+                    
+                }
+            });
+        });
+ 
+        calendrier.appendChild(cell);
+    }
+});
+
+
+
+
+
+
+
+
+</script>
+
+
+
+

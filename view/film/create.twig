@@ -1,0 +1,55 @@
+{{ include('header.twig', {title: 'Ajouter un nouveau film'}) }}
+
+<section class="container">
+    <h1>Ajouter un nouveau film</h1>
+
+    <form action="{{ path }}film/store" method="post">
+        <div class="form-group">
+            <label for="titre">Titre</label>
+            <input type="text" id="titre" name="titre" required>
+        </div>
+
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <input type="text" id="genre" name="genre" required>
+        </div>
+        <div class="form-group">
+    <label for="categorie">Catégorie</label>
+    <select id="categorie" name="categorie" required>
+     <option value="">-- Sélectionner une catégorie --</option>
+        <option value="long-métrage">Long-métrage</option>
+        <option value="moyen-métrage">Moyen-métrage</option>
+        <option value="court-métrage">Court-métrage</option>
+    </select>
+</div>
+
+
+        <div class="form-group">
+            <label for="duree">Durée (en minutes)</label>
+            <input type="number" id="duree" name="duree" required>
+        </div>
+
+        <div class="form-group">
+            <label for="annee_originale">Année de sortie</label>
+        <input type="number" id="annee_originale" name="annee_originale"  required>
+
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="lien_image">Lien de l'Image</label>
+            <input type="text" id="lien_image" name="lien_image">
+        </div>
+
+        <div class="form-group">
+            <label for="lien_video">Lien Vidéo</label>
+            <input type="text" id="lien_video" name="lien_video">
+        </div>
+
+        <button type="submit">Ajouter le film</button>
+    </form>
+</section>

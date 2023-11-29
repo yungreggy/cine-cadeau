@@ -1,0 +1,72 @@
+{{ include('header.twig', {title: 'Liste des films'}) }}
+
+
+<main>
+<section class="container">
+<div class="filtres">
+
+ <form action="{{ path }}film/list" method="get">
+       <div class="form-group">
+           <label for="sort_by">Trier par :</label>
+           <select id="sort_by" name="sort_by">
+           <option value="">-- Sélectionner un tri --</option>
+              <option value="annee_asc" {% if currentSortOption == 'annee_asc' %}selected{% else %}{% endif %}>Année (Ascendant)</option>
+              <option value="annee_desc" {% if currentSortOption == 'annee_desc' %}selected{% else %}{% endif %}>Année (Descendant)</option>
+               <option value="id_asc" {% if currentSortOption == 'id_asc' %}selected{% else %}{% endif %}>ID (Ascendant)</option>
+               <option value="id_desc" {% if currentSortOption == 'id_desc' %}selected{% else %}{% endif %}>ID (Descendant)</option>
+               <option value="titre_asc" {% if currentSortOption == 'titre_asc' %}selected{% else %}{% endif %}>Titre (A-Z)</option>
+               <option value="titre_desc" {% if currentSortOption == 'titre_desc' %}selected{% else %}{% endif %}>Titre (Z-A)</option>
+               <option value="genre_asc" {% if currentSortOption == 'genre_asc' %}selected{% else %}{% endif %}>Genre (A-Z)</option>
+               <option value="genre_desc" {% if currentSortOption == 'genre_desc' %}selected{% else %}{% endif %}>Genre (Z-A)</option>
+           </select>
+       </div>
+            <button type="submit">Trier</button>
+        </form>
+<a href="{{path}}film/create">Ajouter un film</a>
+ <div class="search-bar">
+            <form action="{{ path }}film/search" method="get">
+                <input type="text" id="search_query" name="search_query" placeholder="Entrez le titre du film...">
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+        </div>
+<table>
+    <thead>
+        <tr>
+            <th>Affiche</th> <!-- Colonne supplémentaire pour l'affiche -->
+            <th>Titre</th>
+            <th>Genre</th>
+            <th>Durée</th>
+            <th>Année</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+ 
+        {% for film in films %}
+            <tr>
+              <td>
+    {% if film.lien_image %}
+        <a href="{{ path }}film/show/{{ film.id }}">
+            <img src="{{ film.lien_image }}" alt="Affiche de {{ film.titre }}" style="max-width: 91px; max-height: 135px;">
+        </a>
+    {% else %}
+        Pas d'affiche disponible
+    {% endif %}
+</td>
+
+                <td><a href="{{ path }}film/show/{{ film.id }}" class="film-titre">{{ film.titre }}</a></td>
+                <td>{{ film.genre }}</td>
+                <td>{{ film.duree }} minutes</td>
+                <td>{{ film.annee_originale }}</td>
+                <td>
+                    <a href="{{ path }}film/edit/{{ film.id }}" class="btn-edit">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</section>
+ </main>
+

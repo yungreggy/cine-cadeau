@@ -1,0 +1,39 @@
+
+{{ include('header.twig', {'title': 'Créer une programamtion'}) }}
+<form action="{{path}}programmation/store" method="post">
+    <h2>Créer une Programmation</h2>
+
+    <!-- Champs existants pour heure de début, fin, et type de contenu -->
+<label for="nom_programme">Nom du programme :</label>
+<input type="text" id="nom_programme" name="nom" required placeholder="Entrez le nom du programme">
+
+
+
+
+
+
+
+
+<label>
+    <input type="checkbox" name="generation_auto_pub" id="generation_auto_pub">
+    Activer la génération automatique de blocs publicitaires
+</label>
+
+
+
+
+    <label for="date_debut">Date de début :</label>
+<input type="date" id="date_debut" name="date_debut" required>
+
+<label for="date_fin">Date de fin :</label>
+<input type="date" id="date_fin" name="date_fin" required>
+
+
+
+
+
+<div>
+
+   <button type="submit">Créer</button>
+   </div>
+        </form>

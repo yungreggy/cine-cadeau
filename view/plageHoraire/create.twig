@@ -1,0 +1,85 @@
+{{ include('header.twig', {'title': 'Créer une plage horaire'}) }}
+
+<form action="{{path}}plageHoraire/store" method="post">
+
+<div class="form-group">
+    <label for="id_programme">Programme</label>
+    <select id="id_programme" name="id_programme" required>
+     <option value="">-- Sélectionner un programme --</option>
+        {% for programme in programmes %}
+            <option value="{{ programme.id }}">{{ programme.nom }}</option>
+        {% endfor %}
+    </select>
+
+
+
+<label for="choix_media">Choix du média :</label>
+<select id="choix_media" name="choix_media" required>
+    <option value="">-- Sélectionner un média --</option>
+    <option value="film">Film</option>
+    <option value="serie">Série</option>
+    <option value="publicite">Publicité</option>
+</select>
+
+
+<select id="choix_categorie" name="choix_categorie" disabled required>
+    <option value="toutes">Toutes les catégories</option>
+    <option value="long-métrage">Long-métrage</option>
+    <option value="moyen-métrage">Moyen-métrage</option>
+    <option value="court-métrage">Court-métrage</option>
+</select>
+
+
+<select id="liste_films" name="liste_films" disabled required>
+  <option value="">-- Sélectionner un film --</option>
+  <option value="">*Film au hasard </option>
+    {% for film in films %}
+     
+        <option value="{{ film.id }}" data-categorie="{{ film.categorie }}">{{ film.titre }}</option>
+    {% endfor %}
+</select>
+
+
+
+<label for="heure_debut">Heure de début :</label>
+<input type="time" id="heure_debut" name="heure_debut" required>
+
+
+
+
+
+   <button type="submit">Créer</button>
+        </form>
+
+<script>
+    document.getElementById('choix_media').addEventListener('change', function() {
+        var choix = this.value;
+        var selectCategorie = document.getElementById('choix_categorie');
+        var selectFilms = document.getElementById('liste_films');
+
+        // Active ou désactive les selects de catégories et de films
+        var isFilmSelected = choix === 'film';
+        selectCategorie.disabled = !isFilmSelected;
+        selectFilms.disabled = !isFilmSelected;
+
+        if (!isFilmSelected) {
+            // Réinitialise les sélections si 'film' n'est pas sélectionné
+            selectCategorie.value = '';
+            selectFilms.value = '';
+        }
+    });
+
+    document.getElementById('choix_categorie').addEventListener('change', function() {
+        var categorie = this.value;
+        var films = document.getElementById('liste_films').options;
+
+    
+    // Ne masque pas l'option de film au hasard (première option)
+ for (var i = 2; i < films.length; i++) {
+    films[i].style.display = (categorie === 'toutes' || films[i].getAttribute('data-categorie') === categorie) ? '' : 'none';
+}
+
+    });
+
+</script>
+

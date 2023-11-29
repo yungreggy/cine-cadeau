@@ -1,0 +1,45 @@
+{{ include('header.twig', {title: 'Détails de la série'}) }}
+
+<main>
+    <section class="container">
+        <h1>Détails de la série : {{ serie.titre }}</h1>
+
+        <div class="serie-details">
+            {% if serie.lien_image %}
+                <img src="{{ serie.lien_image }}" alt="Image de {{ serie.titre }}" style="max-width: 200px; max-height: 300px;">
+            {% else %}
+                Pas d'image disponible
+            {% endif %}
+
+            <div class="serie-info">
+                <p><strong>Titre : </strong>{{ serie.titre }}</p>
+                <p><strong>Année de sortie : </strong>{{ serie.annee_originale }}</p>
+                <p><strong>Description : </strong>{{ serie.description }}</p>
+                <!-- Autres informations si nécessaire -->
+            </div>
+             <br>
+<div>
+    <h2>Épisodes</h2>
+    {% for saison, episodes in episodesParSaison %}
+        <h3>Saison {{ saison }}</h3>
+        <ul class="liste-episodes">
+            {% for emission in episodes %}
+                <li>
+                    <a href="{{ path }}televiseur?video={{ emission.lien_video }}">Épisode {{ emission.numero_episode }} : {{ emission.titre }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
+
+
+          
+        </div>
+<a href="{{ path }}emission/create?serie_id={{ serie.id }}">Ajouter un épisode</a>
+   
+        <br>
+      <!-- Dans serie/show.twig -->
+     <a href="{{ path }}serie/edit/{{ serie.id }}">Modifier cette série</a>
+
+    </section>
+</main>

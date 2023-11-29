@@ -1,0 +1,44 @@
+{{ include('header.twig', {'title': 'Détails de la Plage Horaire'}) }}
+
+<main>
+    <section class="container">
+        <h1>Détails de la Plage Horaire</h1>
+        <div>
+            <p><strong>ID:</strong> {{ plageHoraire.id }}</p>
+            <p><strong>Programme ID:</strong> {{ plageHoraire.id_programme }}</p>
+            <p><strong>Heure de Début:</strong> {{ plageHoraire.heure_debut }}</p>
+            <p><strong>Heure de Fin:</strong> {{ plageHoraire.heure_fin }}</p>
+        </div>
+
+        <h2>Médias Programmés</h2>
+        {% if medias %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Date</th>
+                        <th>Heure de Début</th>
+                        <th>Heure de Fin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for media in medias %}
+                        <tr>
+                            <td><a href="{{ path }}film/show/{{ media.id }}" class="film-titre">{{ media.titre }}</td>
+                            <td>{{ media.date }}</td>
+                            <td>{{ plageHoraire.heure_debut }}</td>
+                            <td>{{ media.heure_fin }}</td>
+                          
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucun média n'est programmé pour cette plage horaire.</p>
+        {% endif %}
+
+        <a href="{{ path }}plageHoraire/index">Retour à la liste</a>
+    </section>
+</main>
+
+

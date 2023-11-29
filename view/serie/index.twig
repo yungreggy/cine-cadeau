@@ -1,0 +1,46 @@
+{{ include('header.twig', {title: 'Liste des séries'}) }}
+
+<main>
+    <section class="container">
+        <h1>Liste des séries</h1>
+         <a href="{{ path }}serie/create">Ajouter une nouvelle série</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Affiche</th>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Genre</th>
+                    <th>Année</th>
+                    <th>Actions</th> <!-- Colonne pour les actions comme 'Modifier' -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for serie in series %}
+                <tr>
+                    <td>
+                        {% if serie.lien_image %}
+                            <a href="{{ path }}serie/show/{{ serie.id }}">
+                                <img src="{{ serie.lien_image }}" alt="Image de {{ serie.titre }}" style="max-width: 91px; max-height: 135px;">
+                            </a>
+                        {% else %}
+                            Pas d'image disponible
+                        {% endif %}
+                    </td>
+                    <td>{{ serie.id }}</td>
+                    <td>
+                        <a href="{{ path }}serie/show/{{ serie.id }}">{{ serie.titre }}</a>
+                    </td>
+                    <td>{{ serie.genre }}</td>
+                    <td>{{ serie.annee_originale }}</td>
+                    <td>
+                        <a href="{{ path }}serie/edit/{{ serie.id }}">Modifier</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+
